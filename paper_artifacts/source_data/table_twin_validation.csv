@@ -1,0 +1,10 @@
+capability,metric,mean,seed_sample_std,seeds
+Tx-position update,Delta correlation,0.9253168535529506,0.004364377464485503,"42,43,44"
+Tx-position update,Sign agreement,0.920883178700983,0.0021041780273605357,"42,43,44"
+Tx-position update,Delta RMSE,0.08946627496902736,0.001006951609124516,"42,43,44"
+Receiver-height update,Delta correlation,0.703022406253789,0.013638674877404756,"42,43,44"
+Receiver-height update,Sign agreement,0.9792035917627075,0.0022574440506152576,"42,43,44"
+Receiver-height update,Delta RMSE,0.03398942476880818,0.0010288855229234793,"42,43,44"
+Site planning,Top-1 accuracy,0.875,0.03125,"42,43,44"
+Site planning,Rank correlation,0.9583333333333335,0.006486456761221256,"42,43,44"
+Site planning,Normalized regret,0.0006757798537709355,0.00029303457135768866,"42,43,44"

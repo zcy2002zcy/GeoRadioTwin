@@ -1,0 +1,11 @@
+{
+  "base_config": "hybrid_geo.yaml",
+  "experiment": {
+    "name": "hybrid_no_los",
+    "use_los": false,
+    "use_depth": true
+  },
+  "training": {
+    "pretrained_checkpoint": "../outputs/coord_depth_valid_rx_v1/checkpoints/best.pt"
+  }
+}

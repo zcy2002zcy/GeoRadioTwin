@@ -1,0 +1,64 @@
+{
+  "base_config": "base.yaml",
+  "experiment": {
+    "name": "rmtransformer_adapted_random0",
+    "method_label": "RMTransformer-style (height-adapted)",
+    "implementation_status": "independent paper-guided adaptation; not an official or exact reproduction",
+    "sample_rate": 0.0
+  },
+  "reference": {
+    "title": "RMTransformer: Accurate Radio Map Construction and Coverage Prediction",
+    "authors": "Y. Li, C. Zhang, W. Wang, and Y. Huang",
+    "venue": "2025 IEEE 101st Vehicular Technology Conference (VTC2025-Spring)",
+    "doi": "10.1109/VTC2025-SPRING65109.2025.11174709",
+    "arxiv": "2501.05190",
+    "official_code_available": false,
+    "external_pretraining": false
+  },
+  "data": {
+    "train_maps": 4096,
+    "val_maps": 128,
+    "test_maps": 128,
+    "data_seed": 42,
+    "selection_strategy": "balanced_scene"
+  },
+  "model": {
+    "input_channels": 3,
+    "input_channel_names": [
+      "building_height_normalized",
+      "tx_source",
+      "rx_height_plane"
+    ],
+    "stem_channels": 128,
+    "encoder_channels": [128, 256, 512, 1024],
+    "num_heads": [4, 8, 16, 32],
+    "partition_size": 8,
+    "mlp_ratio": 4.0,
+    "mbconv_expansion": 4.0,
+    "attention_dropout": 0.0,
+    "projection_dropout": 0.0,
+    "use_gradient_checkpointing": true
+  },
+  "training": {
+    "epochs": 100,
+    "batch_size": 1,
+    "learning_rate": 0.0001,
+    "min_learning_rate": 0.00001,
+    "weight_decay": 0.0,
+    "optimizer": "Adam",
+    "num_workers": 0,
+    "amp": true,
+    "gradient_clip": 1.0,
+    "early_stopping_patience": 15,
+    "max_steps_per_epoch": 1000,
+    "selection_metric": "nmse"
+  },
+  "evaluation": {
+    "test_max_maps": 128,
+    "selection_strategy": "balanced_scene",
+    "support": "valid_rx_only",
+    "primary_metric_domain": "normalized_minus1_to_1",
+    "normalization": "x / 127.5 - 1.0",
+    "per_map_macro_average": true
+  }
+}

@@ -1,0 +1,21 @@
+\begin{table*}[t]
+\centering
+\caption{Ablation of geometric and raster conditioning. Multi-seed rows report mean $\pm$ sample standard deviation over seeds 42--44; rows marked with one seed are diagnostic ablations and are not used for variance claims. Metrics use the same normalized domain and valid-receiver support as Table~\ref{tab:main_results}.}
+\label{tab:ablation}
+\setlength{\tabcolsep}{5pt}
+\begin{tabular}{lcrrrr}
+\toprule
+Variant & Seeds & NMSE $\downarrow$ & RMSE $\downarrow$ & MAE $\downarrow$ & PSNR $\uparrow$ \\
+\midrule
+Coordinate only & 3 & 0.4365 $\pm$ 0.0059 & 0.2570 $\pm$ 0.0005 & 0.2183 $\pm$ 0.0014 & 18.05 $\pm$ 0.02 \\
+LOS only & 1 & 0.1550 & 0.1727 & 0.1292 & 21.56 \\
+Depth only & 1 & 0.1320 & 0.1569 & 0.1201 & 22.45 \\
+LOS + depth, no raster context & 3 & 0.1235 $\pm$ 0.0005 & 0.1552 $\pm$ 0.0001 & 0.1148 $\pm$ 0.0007 & 22.57 $\pm$ 0.01 \\
+Hybrid without ray aggregation & 3 & 0.0470 $\pm$ 0.0004 & 0.0986 $\pm$ 0.0004 & 0.0721 $\pm$ 0.0008 & 26.60 $\pm$ 0.02 \\
+Hybrid without analytic geometry & 3 & 0.0268 $\pm$ 0.0002 & 0.0751 $\pm$ 0.0002 & 0.0541 $\pm$ 0.0002 & 29.09 $\pm$ 0.01 \\
+Hybrid without LOS & 1 & 0.0261 & 0.0744 & 0.0532 & 29.19 \\
+Hybrid without depth & 1 & 0.0256 & 0.0737 & 0.0520 & 29.32 \\
+\textbf{Full GeoRadioTwin} & 3 & \textbf{0.0257 $\pm$ 0.0006} & \textbf{0.0742 $\pm$ 0.0006} & \textbf{0.0527 $\pm$ 0.0008} & \textbf{29.23 $\pm$ 0.08} \\
+\bottomrule
+\end{tabular}
+\end{table*}

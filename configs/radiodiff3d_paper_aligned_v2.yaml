@@ -1,0 +1,90 @@
+{
+  "base_config": "base.yaml",
+  "experiment": {
+    "name": "radiodiff3d_paper_aligned_v2_random0",
+    "seed": 42,
+    "method_label": "RadioDiff-3D-style conditional diffusion (paper-aligned adapted v2)",
+    "implementation_status": "independent paper-aligned adaptation; official RadioDiff-3D training code is not public",
+    "sample_rate": 0.0
+  },
+  "reference": {
+    "title": "RadioDiff-3D: A 3D x 3D Radio Map Dataset and Generative Diffusion Based Benchmark for 6G Environment-Aware Communication",
+    "doi": "10.1109/TNSE.2025.3590545",
+    "paper_url": "https://arxiv.org/abs/2507.12166",
+    "urbanradio3d_upstream": "https://github.com/UNIC-Lab/UrbanRadio3D",
+    "official_3d_training_code_available": false,
+    "external_pretraining": false
+  },
+  "data": {
+    "train_volumes": 10400,
+    "val_volumes": 100,
+    "test_anchor_maps": 128,
+    "test_conditioning_volumes": 128,
+    "test_scored_maps": 128,
+    "maps_per_volume": 4,
+    "expected_rx_heights": [1.0, 2.0, 3.0, 4.0],
+    "data_seed": 42,
+    "selection_strategy": "balanced_scene",
+    "strict_complete_volume_audit": true,
+    "exclude_target_values": [0],
+    "condition_layout": "paper_v2",
+    "condition_channel_names": [
+      "building_segmentation_volume",
+      "building_height_volume",
+      "tx_location_volume"
+    ],
+    "building_scale": 255.0,
+    "rx_height_scale": 20.0,
+    "training_fraction_of_project_train_volumes": 0.10
+  },
+  "model": {
+    "condition_channels": 3,
+    "target_channels": 1,
+    "base_channels": 32,
+    "channel_multipliers": [1, 2, 4, 6],
+    "time_dimension": 128,
+    "dropout": 0.0,
+    "expected_depth": 4,
+    "spatial_downsampling_only": true,
+    "multiscale_conditioning": true
+  },
+  "diffusion": {
+    "timesteps": 1000,
+    "beta_schedule": "cosine",
+    "parameterization": "x0",
+    "loss_type": "l1",
+    "loss_support": "full",
+    "sampling_algorithm": "DDIM",
+    "sampling_steps": 200,
+    "validation_sampling_steps": 20,
+    "ddim_eta": 0.0,
+    "sampling_seed": 2027,
+    "clip_denoised": true,
+    "best_of_k": 1
+  },
+  "training": {
+    "epochs": 10,
+    "batch_size": 1,
+    "gradient_accumulation_steps": 2,
+    "learning_rate": 0.00005,
+    "minimum_learning_rate": 0.000001,
+    "weight_decay": 0.000001,
+    "num_workers": 4,
+    "amp": true,
+    "gradient_clip": 1.0,
+    "ema_decay": 0.995,
+    "ema_update_every": 10,
+    "early_stopping_patience": null,
+    "max_steps_per_epoch": null,
+    "selection_metric": "nmse",
+    "expected_optimizer_steps": 52000
+  },
+  "evaluation": {
+    "support": "valid_rx_only",
+    "primary_metric_domain": "normalized_minus1_to_1",
+    "normalization": "x / 127.5 - 1.0",
+    "per_map_macro_average": true,
+    "fixed_sampling_seed": true,
+    "best_of_k_selection": false
+  }
+}

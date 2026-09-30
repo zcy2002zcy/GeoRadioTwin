@@ -1,0 +1,29 @@
+\begin{table*}[t]
+\centering
+\caption{Digital-twin capability validation on held-out scenes. State-update and planning results are mean $\pm$ sample standard deviation across seeds 42--44. Unseen-height results use 64 paired scene/transmitter anchors per height and seed. Uncertainty uses a three-member ensemble calibrated on held-out validation maps.}
+\label{tab:twin_validation}
+\setlength{\tabcolsep}{5pt}
+\begin{tabular}{lll}
+\toprule
+Capability & Metric & Result \\
+\midrule
+Tx-position state update & Delta correlation / sign agreement & 0.9253 $\pm$ 0.0044 / 0.9209 $\pm$ 0.0021 \\
+ & Delta RMSE & 0.0895 $\pm$ 0.0010 \\
+Receiver-height state update & Delta correlation / sign agreement & 0.7030 $\pm$ 0.0136 / 0.9792 $\pm$ 0.0023 \\
+ & Delta RMSE & 0.0340 $\pm$ 0.0010 \\
+Site planning (32 scenes) & Top-1 accuracy / rank correlation & 0.8750 $\pm$ 0.0312 / 0.9583 $\pm$ 0.0065 \\
+ & Normalized regret & 0.00068 $\pm$ 0.00029 \\
+\midrule
+Unseen height h5 & NMSE / RMSE / PSNR & 0.0543 $\pm$ 0.0082 / 0.0979 $\pm$ 0.0063 / 26.38 $\pm$ 0.58 \\
+Unseen height h6 & NMSE / RMSE / PSNR & 0.1224 $\pm$ 0.0067 / 0.1387 $\pm$ 0.0033 / 23.24 $\pm$ 0.21 \\
+Unseen height h7 & NMSE / RMSE / PSNR & 0.2049 $\pm$ 0.0140 / 0.1751 $\pm$ 0.0051 / 21.24 $\pm$ 0.24 \\
+Unseen height h8 & NMSE / RMSE / PSNR & 0.1993 $\pm$ 0.0202 / 0.1747 $\pm$ 0.0077 / 21.28 $\pm$ 0.38 \\
+\midrule
+Three-seed ensemble & Ensemble NMSE / RMSE / PSNR & 0.0220 / 0.0685 / 29.97 \\
+Uncertainty ranking & Global error--uncertainty correlation & 0.3982 \\
+Calibrated intervals & 90\% / 95\% empirical pixel coverage & 0.8951 / 0.9470 \\
+\bottomrule
+\end{tabular}
+\vspace{2pt}
+\parbox{0.98\textwidth}{\footnotesize PSNR is in dB; other errors and interval coverage are in the normalized encoded domain. No physical path-loss unit is claimed because the source PNG-to-dB conversion has not been independently verified.}
+\end{table*}

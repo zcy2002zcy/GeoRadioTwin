@@ -1,0 +1,76 @@
+{
+  "project": {
+    "name": "GeoRadioTwin_ICC2027",
+    "seed": 42
+  },
+  "data": {
+    "pathloss_root": "${GEORADIOTWIN_PATHLOSS_ROOT}",
+    "building_height_root": "${GEORADIOTWIN_BUILDING_ROOT}",
+    "output_root": "../data/processed",
+    "pathloss_folder_pattern": "^PathLoss_h(?P<height>[0-9]+)_(?P<partition>.+)$",
+    "pathloss_filename_pattern": "^(?P<scene_id>[0-9]+)_X(?P<tx_x>[0-9]+)_Y(?P<tx_y>[0-9]+)\\.png$",
+    "building_filename_pattern": "^(?P<scene_id>[0-9]+)\\.png$",
+    "rx_heights": [1, 2, 3, 4],
+    "tx_height": 1.5,
+    "pathloss_channel": 0,
+    "extensions": [".png"]
+  },
+  "dataset": {
+    "points_per_map": 4096,
+    "train_query_mode": "random",
+    "eval_query_mode": "fixed_random",
+    "exclude_building_occupied": true,
+    "exclude_target_values": [0],
+    "target_exclusion_tolerance": 0.0,
+    "val_selection_strategy": "balanced_scene"
+  },
+  "geometry": {
+    "cache_root": "../cache/geometry_features",
+    "samples_per_unit": 2.0,
+    "ray_chunk_size": 1024,
+    "build_split": "train",
+    "build_max_maps": 4096,
+    "build_selection_strategy": "balanced_scene"
+  },
+  "model": {
+    "num_frequencies": 6,
+    "hidden_dim": 256,
+    "num_layers": 6,
+    "geometry_hidden_dim": 32,
+    "geometry_output_dim": 32,
+    "use_layer_norm": false,
+    "xy_scale": 255.0,
+    "z_scale": 20.0,
+    "distance_scale": 362.0
+  },
+  "training": {
+    "epochs": 100,
+    "batch_size": 4,
+    "learning_rate": 0.001,
+    "weight_decay": 0.000001,
+    "num_workers": 0,
+    "amp": true,
+    "gradient_clip": 1.0,
+    "early_stopping_patience": 15,
+    "steps_per_epoch": 1000,
+    "train_max_maps": 4096,
+    "train_selection_strategy": "balanced_scene",
+    "val_max_maps": 128,
+    "target_scale": 255.0,
+    "selection_metric": "nmse",
+    "run_tag": "valid_rx_v1"
+  },
+  "evaluation": {
+    "test_max_maps": 128,
+    "selection_strategy": "balanced_scene",
+    "query_batch_size": 8192,
+    "save_arrays": true,
+    "save_figures": true
+  },
+  "output_root": "../outputs",
+  "split": {
+    "train_ratio": 0.8,
+    "val_ratio": 0.1,
+    "test_ratio": 0.1
+  }
+}

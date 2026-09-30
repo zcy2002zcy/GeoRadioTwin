@@ -1,0 +1,21 @@
+\begin{table*}[t]
+\centering
+\caption{Sampling-free radio-map prediction on the scene-disjoint test set. Values are macro-averaged over 128 balanced maps per seed and reported as mean $\pm$ sample standard deviation across three training seeds, except the deterministic log-distance baseline. All error metrics are computed in the normalized $[-1,1]$ target domain; PSNR is in dB. Lower is better for NMSE, RMSE, and MAE; higher is better for PSNR.}
+\label{tab:main_results}
+\setlength{\tabcolsep}{4.5pt}
+\begin{tabular}{lrrrrrr}
+\toprule
+Method & Seeds & Params. & NMSE $\downarrow$ & RMSE $\downarrow$ & MAE $\downarrow$ & PSNR $\uparrow$ \\
+\midrule
+\textbf{GeoRadioTwin (ours)} & 3 & \textbf{1.09M} & \textbf{0.0257 $\pm$ 0.0006} & \textbf{0.0742 $\pm$ 0.0006} & \textbf{0.0527 $\pm$ 0.0008} & \textbf{29.23 $\pm$ 0.08} \\
+UniRM (adapted) & 3 & 11.79M & 0.0442 $\pm$ 0.0010 & 0.0896 $\pm$ 0.0002 & 0.0715 $\pm$ 0.0004 & 27.31 $\pm$ 0.03 \\
+PEFNet-inspired VIE U-Net (adapted) & 3 & 68.60M & 0.0472 $\pm$ 0.0025 & 0.0985 $\pm$ 0.0027 & 0.0736 $\pm$ 0.0024 & 26.65 $\pm$ 0.22 \\
+RadioDiff-3D-style (adapted v2) & 3 & 14.86M & 0.0743 $\pm$ 0.0011 & 0.1232 $\pm$ 0.0004 & 0.0873 $\pm$ 0.0004 & 24.76 $\pm$ 0.00 \\
+RadioUNet-style (adapted) & 3 & 7.76M & 0.1774 $\pm$ 0.0080 & 0.1823 $\pm$ 0.0025 & 0.1399 $\pm$ 0.0030 & 21.11 $\pm$ 0.16 \\
+RMTransformer-style (height-adapted) & 3 & 54.04M & 1.3059 $\pm$ 0.8769 & 0.4069 $\pm$ 0.1600 & 0.3613 $\pm$ 0.1568 & 15.99 $\pm$ 3.01 \\
+Fitted log-distance regression & -- & 2 & 0.4363 & 0.2572 & 0.2190 & 18.03 \\
+\bottomrule
+\end{tabular}
+\vspace{2pt}
+\parbox{0.98\textwidth}{\footnotesize Adapted literature baselines were independently implemented and trained from scratch under the same split, mask, target encoding, and seed protocol; they are not claimed as official reproductions.}
+\end{table*}

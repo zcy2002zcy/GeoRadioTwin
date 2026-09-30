@@ -1,0 +1,25 @@
+{
+  "base_config": "base.yaml",
+  "experiment": {
+    "name": "coord_los_depth_random1",
+    "use_los": true,
+    "use_depth": true,
+    "depth_feature": "normalized_depth"
+  },
+  "sparse_calibration": {
+    "sample_rate": 0.01,
+    "sampling": "random_valid_rx",
+    "context_radii": [4, 16, 64],
+    "train_resample_each_epoch": true,
+    "evaluation_seeded_fixed": true,
+    "evaluate_observed_points": false
+  },
+  "model": {
+    "calibration_hidden_dim": 32
+  },
+  "training": {
+    "learning_rate": 0.0003,
+    "early_stopping_patience": 25,
+    "pretrained_checkpoint": "../outputs/coord_los_depth_valid_rx_v1/checkpoints/best.pt"
+  }
+}

@@ -1,0 +1,86 @@
+{
+  "base_config": "base.yaml",
+  "experiment": {
+    "name": "radiodiff3d_adapted_random0",
+    "seed": 42,
+    "method_label": "RadioDiff-3D-style conditional diffusion (adapted)",
+    "implementation_status": "independent upstream- and paper-informed adaptation; not an official or faithful RadioDiff-3D reproduction",
+    "sample_rate": 0.0
+  },
+  "reference": {
+    "title": "RadioDiff-3D / UrbanRadio3D",
+    "doi": "10.1109/TNSE.2025.3590545",
+    "radiodiff_upstream": "https://github.com/UNIC-Lab/RadioDiff",
+    "radiodiff_upstream_commit": "ee7c4c380037dd6aa30ab675d099b6f62199d3d5",
+    "urbanradio3d_upstream": "https://github.com/UNIC-Lab/UrbanRadio3D",
+    "official_3d_training_code_available": false,
+    "external_pretraining": false
+  },
+  "data": {
+    "train_volumes": 1024,
+    "val_volumes": 32,
+    "test_anchor_maps": 128,
+    "test_conditioning_volumes": 128,
+    "test_scored_maps": 128,
+    "maps_per_volume": 4,
+    "expected_rx_heights": [1.0, 2.0, 3.0, 4.0],
+    "data_seed": 42,
+    "selection_strategy": "balanced_scene",
+    "strict_complete_volume_audit": true,
+    "exclude_target_values": [0],
+    "condition_layout": "legacy_height",
+    "building_scale": 255.0,
+    "rx_height_scale": 20.0
+  },
+  "model": {
+    "condition_channels": 3,
+    "condition_channel_names": [
+      "building_height_volume",
+      "tx_source_volume",
+      "rx_height_volume"
+    ],
+    "target_channels": 1,
+    "base_channels": 32,
+    "channel_multipliers": [1, 2, 4, 6],
+    "time_dimension": 128,
+    "dropout": 0.0,
+    "expected_depth": 4,
+    "multiscale_conditioning": false,
+    "spatial_downsampling_only": true
+  },
+  "diffusion": {
+    "timesteps": 1000,
+    "beta_schedule": "cosine",
+    "parameterization": "epsilon",
+    "loss_type": "l2",
+    "loss_support": "valid_rx",
+    "sampling_algorithm": "DDIM",
+    "sampling_steps": 50,
+    "validation_sampling_steps": 20,
+    "ddim_eta": 0.0,
+    "sampling_seed": 2027,
+    "clip_denoised": true,
+    "best_of_k": 1
+  },
+  "training": {
+    "epochs": 100,
+    "batch_size": 1,
+    "learning_rate": 0.00005,
+    "weight_decay": 0.000001,
+    "num_workers": 0,
+    "amp": true,
+    "gradient_clip": 1.0,
+    "ema_decay": 0.995,
+    "early_stopping_patience": 15,
+    "max_steps_per_epoch": 1000,
+    "selection_metric": "nmse"
+  },
+  "evaluation": {
+    "support": "valid_rx_only",
+    "primary_metric_domain": "normalized_minus1_to_1",
+    "normalization": "x / 127.5 - 1.0",
+    "per_map_macro_average": true,
+    "fixed_sampling_seed": true,
+    "best_of_k_selection": false
+  }
+}

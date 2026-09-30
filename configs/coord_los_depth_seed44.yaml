@@ -1,0 +1,5 @@
+{
+  "base_config": "coord_los_depth.yaml",
+  "project": {"seed": 44},
+  "training": {"run_tag": "valid_rx_seed44", "data_seed": 42}
+}

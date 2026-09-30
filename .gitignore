@@ -1,0 +1,40 @@
+# Local data, training artifacts, and external checkouts
+/data/processed/
+/data/counterfactual/generated/
+/data/counterfactual/manifest.csv
+/cache/
+/outputs/
+/external/*/
+*.pt
+*.pth
+*.ckpt
+*.npz
+*.npy
+*.h5
+*.hdf5
+*.zip
+
+# Python/editor/browser state and credentials
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+.idea/
+.vscode/
+.chrome*/
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.log
+*.tmp
+/tmp/
+/overleaf_upload/
+
+# Regenerated publication assets; small CSV/LaTeX snapshots remain versioned
+/paper_artifacts/figures/
+/paper_artifacts/manuscript/
+/paper_figures/
+

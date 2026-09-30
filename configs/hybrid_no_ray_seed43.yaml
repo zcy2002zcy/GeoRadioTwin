@@ -1,0 +1,9 @@
+{
+  "base_config": "hybrid_no_ray.yaml",
+  "project": {"seed": 43},
+  "training": {
+    "run_tag": "valid_rx_seed43",
+    "data_seed": 42,
+    "pretrained_checkpoint": "../outputs/coord_los_depth_valid_rx_seed43/checkpoints/best.pt"
+  }
+}

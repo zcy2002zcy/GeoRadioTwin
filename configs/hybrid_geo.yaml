@@ -1,0 +1,20 @@
+{
+  "base_config": "base.yaml",
+  "experiment": {
+    "name": "hybrid_geo",
+    "use_los": true,
+    "use_depth": true,
+    "depth_feature": "normalized_depth",
+    "use_environment_map": true
+  },
+  "model": {
+    "environment_dim": 64,
+    "ray_samples": 9,
+    "context_mode": "ray"
+  },
+  "training": {
+    "learning_rate": 0.0003,
+    "early_stopping_patience": 20,
+    "pretrained_checkpoint": "../outputs/coord_los_depth_valid_rx_v1/checkpoints/best.pt"
+  }
+}

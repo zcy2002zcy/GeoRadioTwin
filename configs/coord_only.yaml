@@ -1,0 +1,9 @@
+{
+  "base_config": "base.yaml",
+  "experiment": {
+    "name": "coord_only",
+    "use_los": false,
+    "use_depth": false,
+    "depth_feature": "normalized_depth"
+  }
+}
