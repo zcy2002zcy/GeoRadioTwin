@@ -2,7 +2,7 @@
 
 Geometry-guided continuous radio-field prediction for sampling-free radio-map experiments.
 
-本仓库整理了 GeoRadioTwin 的模型、训练、统一评估、基线、消融和数字孪生能力验证代码。当前研究版本面向 ICC 2027；论文尚未声明接收或发表。主方法在推理时只使用建筑高度、发射机状态与接收机查询位置，不需要实测无线电采样点。
+本仓库整理了 GeoRadioTwin 的模型、训练、统一评估、基线、消融和数字孪生能力验证代码。主方法在推理时只使用建筑高度、发射机状态与接收机查询位置，不需要实测无线电采样点。
 
 ## 输入、输出与流程
 
